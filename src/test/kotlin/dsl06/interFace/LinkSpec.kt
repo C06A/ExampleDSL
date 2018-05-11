@@ -1,8 +1,11 @@
 package dsl06.interFace
 
+import com.helpchoice.kotline.hal.InvalidParametersException
+import dsl01.Naive.Link
 import io.kotlintest.matchers.*
 import io.kotlintest.specs.StringSpec
 import java.net.URI
+import java.security.InvalidParameterException
 import java.util.*
 
 class LinkSpec: StringSpec() {

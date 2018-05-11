@@ -1,5 +1,6 @@
 package dsl12.range
 
+import dsl01.Naive.Link
 import io.kotlintest.matchers.*
 import io.kotlintest.specs.StringSpec
 import java.net.URI

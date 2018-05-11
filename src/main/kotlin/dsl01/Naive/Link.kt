@@ -16,9 +16,8 @@ data class Link(
         val templated: Boolean? = null
 ) {
     init {
-        if (rel.length < 1) {
-            throw InvalidParametersException("Invalid parameters for Link:%s", "'rel' cannot be empty")
-        }
+        require (rel.isNotEmpty()) { "Invalid parameters for Link: 'rel' cannot be empty" }
+        require (href.toString().isNotEmpty()) { "URL string must not be empty" }
     }
     private fun toString(name: String, value: Any?): String {
         return when (value) {

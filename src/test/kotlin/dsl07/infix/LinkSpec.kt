@@ -1,5 +1,6 @@
 package dsl07.infix
 
+import dsl01.Naive.Link
 import io.kotlintest.matchers.*
 import io.kotlintest.specs.StringSpec
 import java.net.URI

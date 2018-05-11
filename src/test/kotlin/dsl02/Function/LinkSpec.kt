@@ -1,10 +1,6 @@
 package dsl02.Function
 
-import com.helpchoice.kotline.hal.InvalidParametersException
-import io.kotlintest.matchers.include
-import io.kotlintest.matchers.should
 import io.kotlintest.matchers.shouldBe
-import io.kotlintest.matchers.shouldThrow
 import io.kotlintest.specs.StringSpec
 import org.amshove.kluent.shouldStartWith
 import org.amshove.kluent.shouldThrow
@@ -13,7 +9,7 @@ import java.util.*
 
 class LinkSpec: StringSpec() {
     init {
-        val linkList = listOf<Link>(
+        val linkList = listOf(
                 link("relation", URI("address")),
                 link("relation", URI("address")) {
                     type = "image/*"
@@ -83,28 +79,30 @@ class LinkSpec: StringSpec() {
         "minimal Link.toString()" {
             val link = linkMin
 
-            link.toString() shouldBe listOf<String>(
-                    "\"relation\":{",
-                    "\"href\":\"address\",",
-                    "\"type\":\"application/hal+json\"",
-                    "}").joinToString("")
+            link.toString() shouldBe """
+                    "relation":{
+                        "href":"address",
+                        "type":"application/hal+json"
+                    }
+                    """.lines().map { it.trim() }.joinToString("")
 
         }
 
         "Link.toString()" {
             val link = linkByNames
 
-            link.toString() shouldBe listOf<String>(
-                    "\"relation\":{",
-                    "\"href\":\"address\",",
-                    "\"type\":\"image/*\",",
-                    "\"hreflang\":\"zh\",",
-                    "\"templated\":\"true\",",
-                    "\"name\":\"test name\",",
-                    "\"title\":\"test title\",",
-                    "\"profile\":\"test profile\",",
-                    "\"deprecation\":\"deprecation+info\"",
-                    "}").joinToString("")
+            link.toString() shouldBe """
+                "relation":{
+                    "href":"address",
+                    "type":"image/*",
+                    "hreflang":"zh",
+                    "templated":"true",
+                    "name":"test name",
+                    "title":"test title",
+                    "profile":"test profile",
+                    "deprecation":"deprecation+info"
+                }
+                """.lines().map { it.trim() }.joinToString("")
 
         }
 
